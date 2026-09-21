@@ -1,0 +1,38 @@
+services:
+  db-fastapi:
+    image: postgres:16-alpine
+    container_name: unitecorp_db_fastapi
+    environment:
+      POSTGRES_USER: unitecorp
+      POSTGRES_PASSWORD: unitecorp
+      POSTGRES_DB: unitecorp_fastapi
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_fastapi:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U unitecorp -d unitecorp_fastapi"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  db-dotnet:
+    image: postgres:16-alpine
+    container_name: unitecorp_db_dotnet
+    environment:
+      POSTGRES_USER: unitecorp
+      POSTGRES_PASSWORD: unitecorp
+      POSTGRES_DB: unitecorp_dotnet
+    ports:
+      - "5433:5432"
+    volumes:
+      - pg_dotnet:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U unitecorp -d unitecorp_dotnet"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pg_fastapi:
+  pg_dotnet:
