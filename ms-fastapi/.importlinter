@@ -1,0 +1,79 @@
+; ---------------------------------------------------------------------------
+; Contratos de capa para ms-fastapi.
+;
+; Sin esto, "hexagonal" es solo nombres de carpeta. Python no te da la regla
+; gratis como los .csproj de .NET: nada impide que un caso de uso importe
+; sqlalchemy. Estos contratos corren dentro de pytest, asi que CI avisa.
+;
+; Ejecutar:  lint-imports   (o pytest, que los corre via --import-linter)
+;
+; NOTA: el contrato es explicito por feature, sin wildcards. Al agregar una
+; tercera feature hay que sumar sus contratos aca. Es la parte fea del
+; enforcement, pero evita falsos positivos entre features hermanas.
+; ---------------------------------------------------------------------------
+
+[importlinter]
+root_package = app
+; Necesario para poder prohibir paquetes externos (fastapi, sqlalchemy, pydantic),
+; no solo modulos internos.
+include_external_packages = True
+
+; ---------------------------------------------------------------------------
+; REGLA 1 - El dominio es puro: sin frameworks, sin infraestructura, sin
+; conocer a las capas que dependen de el ni a las features hermanas.
+; ---------------------------------------------------------------------------
+
+[importlinter:contract:content-domain]
+name = content/domain no importa frameworks ni otras capas
+type = forbidden
+source_modules = app.features.content.domain
+forbidden_modules =
+    fastapi
+    sqlalchemy
+    pydantic
+    app.core
+    app.db
+    app.features.content.application
+    app.features.content.infrastructure
+    app.features.newsletter
+
+[importlinter:contract:newsletter-domain]
+name = newsletter/domain no importa frameworks ni otras capas
+type = forbidden
+source_modules = app.features.newsletter.domain
+forbidden_modules =
+    fastapi
+    sqlalchemy
+    pydantic
+    app.core
+    app.db
+    app.features.newsletter.application
+    app.features.newsletter.infrastructure
+    app.features.content
+
+; ---------------------------------------------------------------------------
+; REGLA 2 - Aplicacion depende del puerto, no del adaptador.
+; pydantic SI se permite: schemas.py lo necesita.
+; ---------------------------------------------------------------------------
+
+[importlinter:contract:content-application]
+name = content/application no importa infrastructure ni la BD
+type = forbidden
+source_modules = app.features.content.application
+forbidden_modules =
+    fastapi
+    sqlalchemy
+    app.db
+    app.features.content.infrastructure
+    app.features.newsletter
+
+[importlinter:contract:newsletter-application]
+name = newsletter/application no importa infrastructure ni la BD
+type = forbidden
+source_modules = app.features.newsletter.application
+forbidden_modules =
+    fastapi
+    sqlalchemy
+    app.db
+    app.features.newsletter.infrastructure
+    app.features.content
