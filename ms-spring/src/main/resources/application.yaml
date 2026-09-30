@@ -1,3 +1,13 @@
 spring:
   application:
     name: app
+
+  # Stack reactivo: WebFlux + R2DBC.
+  # Ojo: el esquema es r2dbc:, NO jdbc:. El driver reactivo es io.r2dbc:r2dbc-postgresql.
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5434/unitecorp_spring
+    username: unitecorp
+    password: unitecorp
+
+  # R2DBC no tiene equivalente a hibernate.ddl-auto: el esquema se gestiona
+  # exclusivamente con Flyway. Ver src/main/resources/db/migration/.
