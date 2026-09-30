@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Acceso a datos compartido por todas las features.
+
+    Un unico AppDbContext y un unico juego de migraciones sobre la misma BD.
+    No se hacen DbContext por feature a proposito: multiples contextos sobre
+    una sola base comparten la tabla __EFMigrationsHistory y las listas de
+    migracion se pisan entre si.
+
+    Las features no lo referencian desde Domain ni Application, solo desde
+    su capa Infrastructure.
+  -->
+
+  <ItemGroup>
+    <ProjectReference Include="..\UniteCorp.SharedKernel\UniteCorp.SharedKernel.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
+  </ItemGroup>
+
+</Project>

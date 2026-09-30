@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <!--
+    Composition root. Unico lugar que conoce EF Core, ASP.NET y todas las
+    features: arma el contenedor de DI, configura middleware y mapea las
+    rutas.
+
+    Aclaracion de naming: la presentacion de cada feature vive en
+    Features/<slice>/Application/Endpoints.cs, NO aca. Este proyecto solo
+    las conecta. Por eso se llama Bootstrap y no Api.
+  -->
+
+  <ItemGroup>
+    <ProjectReference Include="..\UniteCorp.Persistence\UniteCorp.Persistence.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
+    <PackageReference Include="Microsoft.OpenApi" />
+  </ItemGroup>
+
+</Project>

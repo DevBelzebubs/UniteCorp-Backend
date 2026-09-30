@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Nucleo compartido entre features (vertical slices).
+
+    Primitivas transversales que no pertenece a ningun bounded context:
+    Result<T>, Error, Page<T>, IDateTime, ICurrentUser, etc.
+
+    Este proyecto no referencia nada, a proposito. Si alguna vez necesitás
+    referenciar EF Core, ASP.NET o cualquier framework, eso no va aca:
+    significa que el tipo no era realmente compartido.
+  -->
+
+</Project>
