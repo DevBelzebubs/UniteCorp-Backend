@@ -11,6 +11,7 @@
   -->
 
   <ItemGroup>
+    <ProjectReference Include="..\UniteCorp.Features\UniteCorp.Features.csproj" />
     <ProjectReference Include="..\UniteCorp.Persistence\UniteCorp.Persistence.csproj" />
   </ItemGroup>
 

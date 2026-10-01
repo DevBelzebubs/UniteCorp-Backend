@@ -1,9 +1,11 @@
 using UniteCorp.Persistence;
+using UniteCorp.Features;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenApi();
 builder.Services.AddPersistence(builder.Configuration);
+builder.Services.AddFeatures();
 builder.Services.AddHealthChecks();
 
 var app = builder.Build();
