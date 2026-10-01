@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <Compile Include="..\Features\GeocercaActividad\**\*.cs" />
+    <Compile Include="..\Features\PuntoControl\**\*.cs" />
   </ItemGroup>
 
 </Project>
