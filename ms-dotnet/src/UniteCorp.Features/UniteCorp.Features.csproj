@@ -10,6 +10,7 @@
     <Compile Include="..\Features\GeocercaActividad\**\*.cs" />
     <Compile Include="..\Features\PuntoControl\**\*.cs" />
     <Compile Include="..\Features\DispositivoVerificador\**\*.cs" />
+    <Compile Include="..\Features\AsistenciaFisica\**\*.cs" />
   </ItemGroup>
 
 </Project>
