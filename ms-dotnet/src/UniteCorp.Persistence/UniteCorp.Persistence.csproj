@@ -13,6 +13,7 @@
   -->
 
   <ItemGroup>
+    <ProjectReference Include="..\UniteCorp.Features\UniteCorp.Features.csproj" />
     <ProjectReference Include="..\UniteCorp.SharedKernel\UniteCorp.SharedKernel.csproj" />
   </ItemGroup>
 

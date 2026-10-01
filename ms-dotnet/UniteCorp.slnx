@@ -1,5 +1,6 @@
 <Solution>
   <Project Path="src/UniteCorp.Bootstrap/UniteCorp.Bootstrap.csproj" />
+  <Project Path="src/UniteCorp.Features/UniteCorp.Features.csproj" />
   <Project Path="src/UniteCorp.Persistence/UniteCorp.Persistence.csproj" />
   <Project Path="src/UniteCorp.SharedKernel/UniteCorp.SharedKernel.csproj" />
 </Solution>
