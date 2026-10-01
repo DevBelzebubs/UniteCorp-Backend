@@ -12,6 +12,7 @@
     <Compile Include="..\Features\DispositivoVerificador\**\*.cs" />
     <Compile Include="..\Features\AsistenciaFisica\**\*.cs" />
     <Compile Include="..\Features\LoteEmision\**\*.cs" />
+    <Compile Include="..\Features\CertificadoEmitido\**\*.cs" />
   </ItemGroup>
 
 </Project>
