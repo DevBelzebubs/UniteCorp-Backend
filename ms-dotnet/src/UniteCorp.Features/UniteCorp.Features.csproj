@@ -11,6 +11,7 @@
     <Compile Include="..\Features\PuntoControl\**\*.cs" />
     <Compile Include="..\Features\DispositivoVerificador\**\*.cs" />
     <Compile Include="..\Features\AsistenciaFisica\**\*.cs" />
+    <Compile Include="..\Features\LoteEmision\**\*.cs" />
   </ItemGroup>
 
 </Project>
