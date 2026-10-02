@@ -9,9 +9,9 @@ public class GeocercaActividadRepository : IGeocercaActividadRepository
         _dbContext = dbContext;
     }
 
-    public async Task AddAsync(GeocercaActividadModel geocercaActividad)
+    public async Task AddAsync(GeocercaActividadDtoIn geocercaActividad)
     {
-        await _dbContext.Set<GeocercaActividadModel>().AddAsync(geocercaActividad);
+        await _dbContext.Set<GeocercaActividadDtoIn>().AddAsync(geocercaActividad);
     }
 
     public void Update(GeocercaActividadModel geocercaActividad)

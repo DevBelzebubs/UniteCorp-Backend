@@ -11,7 +11,7 @@ public class GeocercaActividadCommandService : IGeocercaActividadCommandService
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<GeocercaActividadModel> CreateAsync(GeocercaActividadModel geocercaActividad)
+    public async Task<GeocercaActividadDtoIn> CreateAsync(GeocercaActividadDtoIn geocercaActividad)
     {
         await _geocercaActividadRepository.AddAsync(geocercaActividad);
         await _unitOfWork.CommitAsync();

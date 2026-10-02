@@ -1,6 +1,6 @@
 public interface IGeocercaActividadCommandService
 {
-    Task<GeocercaActividadModel> CreateAsync(GeocercaActividadModel geocercaActividad);
+    Task<GeocercaActividadDtoIn> CreateAsync(GeocercaActividadDtoIn geocercaActividad);
     Task<GeocercaActividadModel> UpdateAsync(GeocercaActividadModel geocercaActividad);
     Task DeleteAsync(int id);
 }
