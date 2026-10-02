@@ -7,7 +7,7 @@ builder.Services.AddOpenApi();
 builder.Services.AddPersistence(builder.Configuration);
 builder.Services.AddFeatures();
 builder.Services.AddHealthChecks();
-
+builder.Services.AddControllers().AddApplicationPart(typeof(GeoCercaActividadController).Assembly);
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -20,5 +20,7 @@ app.MapGet("/", () => Results.Ok(new { service = "UniteCorp MsDotnet", status = 
 
 app.MapGet("/health", () => Results.Ok(new { status = "ok" }))
     .WithName("Health");
+
+app.MapControllers();
 
 app.Run();
